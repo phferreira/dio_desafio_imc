@@ -1,4 +1,4 @@
-import 'package:dio_desafio_imc/view/person_page.dart';
+import 'package:dio_desafio_imc/view/pages/person_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {

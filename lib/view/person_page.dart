@@ -20,6 +20,7 @@ class _PersonPageState extends State<PersonPage> {
       child: Padding(
         padding: const EdgeInsets.all(8),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Padding(
               padding: const EdgeInsets.all(8.0),

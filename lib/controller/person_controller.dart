@@ -8,11 +8,10 @@ class PersonController extends ValueNotifier<double> {
 
   calculateImc(Person person) {
     try {
-      if ((person.height <= 0) || (person.height > 3.0)) {
+      if ((person.height <= 0.0) || (person.height > 3.0)) {
         value = 0;
         message = 'Informação invalida para o campo altura!';
-      }
-      if ((person.weight <= 0) || (person.weight > 300)) {
+      } else if ((person.weight <= 0.0) || (person.weight > 300)) {
         value = 0;
         message = 'Informação invalida para o campo peso!';
       } else {

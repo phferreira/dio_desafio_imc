@@ -15,7 +15,7 @@ void main() {
       controller.calculateImc(person);
 
       expect(controller.value, 24.69);
-      expect(controller.message, 'IMC normal.');
+      expect(controller.message, 'Peso normal');
     },
   );
 
@@ -28,7 +28,33 @@ void main() {
       controller.calculateImc(person);
 
       expect(controller.value, 0.0);
-      expect(controller.message, 'Informação invalida!');
+      expect(controller.message, 'Informação invalida para o campo altura!');
+    },
+  );
+
+  test(
+    'Must be return 0 when weight 80.0 and height < 0.00.',
+    () {
+      person.weight = 80.0;
+      person.height = -1.00;
+
+      controller.calculateImc(person);
+
+      expect(controller.value, 0.0);
+      expect(controller.message, 'Informação invalida para o campo altura!');
+    },
+  );
+
+  test(
+    'Must be return 0 when weight 80.0 and height > 3.01.',
+    () {
+      person.weight = 80.0;
+      person.height = 3.01;
+
+      controller.calculateImc(person);
+
+      expect(controller.value, 0.0);
+      expect(controller.message, 'Informação invalida para o campo altura!');
     },
   );
 
@@ -41,20 +67,33 @@ void main() {
       controller.calculateImc(person);
 
       expect(controller.value, 0.0);
-      expect(controller.message, 'Informação invalida!');
+      expect(controller.message, 'Informação invalida para o campo peso!');
     },
   );
 
   test(
-    'Must be return 0 when weight 0.0 and height 0.00.',
+    'Must be return 0 when weight < 0.0 and height 1.80.',
     () {
-      person.weight = 0.0;
-      person.height = 0.0;
+      person.weight = -1.0;
+      person.height = 1.80;
 
       controller.calculateImc(person);
 
       expect(controller.value, 0.0);
-      expect(controller.message, 'Informação invalida!');
+      expect(controller.message, 'Informação invalida para o campo peso!');
+    },
+  );
+
+  test(
+    'Must be return 0 when weight > 300.1 and height 1.80.',
+    () {
+      person.weight = 300.1;
+      person.height = 1.80;
+
+      controller.calculateImc(person);
+
+      expect(controller.value, 0.0);
+      expect(controller.message, 'Informação invalida para o campo peso!');
     },
   );
 }

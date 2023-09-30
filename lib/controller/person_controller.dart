@@ -15,13 +15,18 @@ class PersonController extends ValueNotifier<double> {
         value = 0;
         message = 'Informação invalida para o campo peso!';
       } else {
-        final double imc = person.weight / (person.height * person.height);
-        value = double.parse(imc.toStringAsFixed(2));
+        person.imc = person.weight / (person.height * person.height);
+        person.imc = double.parse(person.imc.toStringAsFixed(2));
+        value = person.imc;
 
-        if (value <= 18.5) {
-          message = 'Baixo peso';
+        if (value <= 16) {
+          message = 'Magreza grave';
+        } else if (value <= 17) {
+          message = 'Magreza moderada';
+        } else if (value <= 18.5) {
+          message = 'Magreza leve';
         } else if ((value > 18.5) && (value < 25)) {
-          message = 'Peso normal';
+          message = 'Saudavel';
         } else if ((value > 25) && (value < 30)) {
           message = 'Sobrepeso';
         } else if ((value > 30) && (value < 35)) {

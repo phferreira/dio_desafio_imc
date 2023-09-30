@@ -16,4 +16,10 @@ class Person {
         weight = 0.0,
         height = 0.0,
         imc = 0.0;
+
+  Person.copyWith(Person copy)
+      : name = copy.name,
+        weight = copy.weight,
+        height = copy.height,
+        imc = copy.imc;
 }
